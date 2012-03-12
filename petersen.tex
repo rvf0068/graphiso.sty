@@ -1,0 +1,62 @@
+\documentclass{beamer}
+
+\setbeamertemplate{navigation symbols}{}%
+
+\usepackage{tikz}
+\usepackage{graphiso}
+
+\begin{document}
+
+\begin{frame}
+  \begin{center}
+    \begin{tikzpicture}
+      \useasboundingbox (-3.5,-3.5) rectangle (3.5,3.5);
+
+      % Vertex x0 appears at slide 1
+      \VertexM[xa=0,ya=-3,xb=3*cos(234),yb=3*sin(234),shows=1,starts=10,stops=20]{x0}
+
+      % Vertices a0 to a2 appear at slide 2
+      \VertexM[xa=-3,ya=-1,xb=3*cos(162),yb=3*sin(16),shows=2,starts=10,stops=20]{a0}
+      \VertexM[xa=0,ya=-1,xb=1.5*cos(234),yb=1.5*sin(234),shows=2,starts=10,stops=20]{a1}
+      \VertexM[xa=3,ya=-1,xb=3*cos(306),yb=3*sin(306),shows=2,starts=10,stops=20]{a2}
+
+      % Edges from x0 to a0,a1,a2 also appear at slide 2. Since no
+      % bending is needed, they are simple \Edge commands
+      \only<2->{\Edge(a0)(x0)}
+      \only<2->{\Edge(a1)(x0)}
+      \only<2->{\Edge(a2)(x0)}
+
+      % Vertices b0,b1,c0,c1,d0,d1 appear at slide 3, also some simple edges
+      \VertexM[xa=-4,ya=1,xb=3*cos(90),yb=3*sin(90),shows=3,starts=10,stops=20]{b0}
+      \VertexM[xa=-2,ya=1,xb=1.5*cos(162),yb=1.5*sin(162),shows=3,starts=10,stops=20]{b1}
+      \only<3->{\Edge(a0)(b0)}
+      \only<3->{\Edge(a0)(b1)}
+      \VertexM[xa=-1,ya=1,xb=1.5*cos(90),yb=1.5*sin(90),shows=4,starts=10,stops=20]{c0}
+      \VertexM[xa=1,ya=1,xb=1.5*cos(18),yb=1.5*sin(18),shows=4,starts=10,stops=20]{c1}
+      \only<4->{\Edge(a1)(c0)}
+      \only<4->{\Edge(a1)(c1)}
+      \VertexM[xa=2,ya=1,xb=3*cos(18),yb=3*sin(18),shows=5,starts=10,stops=20]{d0}
+      \VertexM[xa=4,ya=1,xb=1.5*cos(306),yb=1.5*sin(306),shows=5,starts=10,stops=20]{d1}
+      \only<5->{\Edge(a2)(d0)}
+      \only<5->{\Edge(a2)(d1)}
+
+      % Now some curved edges, appearing in slides 6,7,8. We use the
+      % default values: bends=left, bendsfrom=60
+      \EdgeM[shows=6,starts=10,stops=20]{b0}{c0}
+      \EdgeM[shows=6,starts=10,stops=20]{b0}{d0}
+
+      \EdgeM[shows=7,starts=10,stops=20]{b1}{c1}
+      \EdgeM[shows=7,starts=10,stops=20]{b1}{d1}
+
+      \EdgeM[shows=8,starts=10,stops=20]{b1}{c1}
+      \EdgeM[shows=8,starts=10,stops=20]{b1}{d1}
+
+      \EdgeM[shows=8,starts=10,stops=20]{c0}{d1}
+
+      % The last edge to appear is a simple one
+      \only<9->{\Edge(c1)(d0)}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\end{document}
