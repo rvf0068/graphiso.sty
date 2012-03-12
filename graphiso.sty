@@ -1,0 +1,73 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{xtkzgraph-beamer}[2011/04/25 Additions to tkz-graph for beamer]
+
+\RequirePackage{tkz-graph}
+\RequirePackage{tkz-berge}
+
+\define@cmdkey [GR] {MVx} {xa}{}
+\define@cmdkey [GR] {MVx} {xb}{}
+\define@cmdkey [GR] {MVx} {ya}{}
+\define@cmdkey [GR] {MVx} {yb}{}
+\define@cmdkey [GR] {MVx} {Appears}{}
+\define@cmdkey [GR] {MVx} {StartsMoving}{}
+\define@cmdkey [GR] {MVx} {StopsMoving}{}
+
+\presetkeys    [GR] {MVx} {xa           = 0,
+                           ya           = 0,
+                           xb           = 2,
+                           yb           = 2,
+                           Appears      = 1,
+                           StartsMoving = 1,
+                           StopsMoving  = 10}{}
+
+\define@cmdkey [GR] {MEe} {BendTo}{}
+\define@cmdkey [GR] {MEe} {InitialBend}{}
+\define@cmdkey [GR] {MEe} {Appears}{}
+\define@cmdkey [GR] {MEe} {StartsMoving}{}
+\define@cmdkey [GR] {MEe} {StopsMoving}{}
+\presetkeys    [GR] {MEe} {BendTo       = left,
+  InitialBend  = 60,
+  Appears      = 1,
+  StartsMoving = 1,
+  StopsMoving  = 10}{}
+
+\newcommand{\MovableVertex}[2][]{%
+  \begingroup
+  \setkeys[GR]{MVx}{#1}%
+  \edef\x@start{\cmdGR@MVx@xa}
+  \edef\y@start{\cmdGR@MVx@ya}
+  \edef\x@final{\cmdGR@MVx@xb}
+  \edef\y@final{\cmdGR@MVx@yb}
+  \edef\Vx@appears{\cmdGR@MVx@Appears}
+  \edef\Vx@StartsMoving{\cmdGR@MVx@StartsMoving}
+  \edef\Vx@StopsMoving{\cmdGR@MVx@StopsMoving}
+  \pgfmathsetmacro{\last@still}{\Vx@StartsMoving-1}
+  \foreach\x in {\Vx@appears,...,\last@still}{%
+    \only<\x>{\Vertex[x=\x@start,y=\y@start]{#2}}
+  }
+  \foreach\x in {\Vx@StartsMoving,...,\Vx@StopsMoving}{%
+    \pgfmathsetmacro{\lambdapar}%
+    {(1/(\Vx@StopsMoving-\Vx@StartsMoving))*(\x-\Vx@StartsMoving)}
+    \pgfmathsetmacro{\pos@x}{(1-\lambdapar)*\x@start+\lambdapar*\x@final}
+    \pgfmathsetmacro{\pos@y}{(1-\lambdapar)*\y@start+\lambdapar*\y@final}
+    \only<\x>{\Vertex[x=\pos@x,y=\pos@y]{#2}}
+  }
+  \endgroup
+}
+
+\newcommand{\MovableEdge}[3][]{%
+  \begingroup
+  \setkeys[GR]{MEe}{#1}%
+  \pgfmathsetmacro{\last@still}{\cmdGR@MEe@StartsMoving-1}
+  \foreach\x in {\cmdGR@MEe@Appears,...,\last@still}{%
+    \only<\x>{\Edge[style={bend \cmdGR@MEe@BendTo=\cmdGR@MEe@InitialBend}](#2)(#3)}
+  }
+  \foreach\x in {\cmdGR@MEe@StartsMoving,...,\cmdGR@MEe@StopsMoving}{%
+    \pgfmathsetmacro{\the@bend}%
+    {(\cmdGR@MEe@InitialBend/%
+      (\cmdGR@MEe@StartsMoving-\cmdGR@MEe@StopsMoving))*(\x-\cmdGR@MEe@StopsMoving)}
+    \only<\x>{\Edge[style={bend \cmdGR@MEe@BendTo=\the@bend}](#2)(#3)}
+  }
+  \endgroup
+}
+
