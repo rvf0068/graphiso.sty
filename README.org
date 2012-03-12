@@ -1,0 +1,62 @@
+#+title: Graph isomorphisms in a beamer presentation
+
+* Introduction
+
+This is the documentation of the LaTeX package ~graphiso.sty~. This
+package is built on top of the [[http://www.ctan.org/pkg/tkz-graph][tkz-graph]] package, to show an an
+animation of a graph isomorphisms in a beamer presentation.
+
+The idea is simple: a graph isomorphism is shown in a beamer frame by
+moving step by step all vertices in a graph $G$ from an initial
+position to a final position, using beamer overlays. At present, any
+fixed vertex moves in a linear path. Since the edges always join the
+same vertices, at each stage we have a graph isomorphic to the first.
+
+The package provides only two new macros: ~\VertexM~ and ~\EdgeM~ (here ~M~
+stands for "movable". 
+
+* The macro for movable vertices
+
+~\VertexM~ accepts one mandatory argument: the label of the movable
+vertex, and some optional keys:
+
+| key    | default value | meaning                                |
+|--------+---------------+----------------------------------------|
+| ~xa~     |             0 | initial ~x~ coordinate of the vertex     |
+| ~ya~     |             0 | initial ~y~ coordinate of the vertex     |
+| ~xb~     |             2 | final ~x~ coordinate of the vertex       |
+| ~yb~     |             2 | final ~y~ coordinate of the vertex       |
+| ~shows~  |             1 | overlay where the vertex appears       |
+| ~starts~ |             1 | overlay where the vertex starts moving |
+| ~stops~  |            10 | overlay where the vertex stops moving  |
+
+So, for example, 
+
+#+begin_src latex :exports code
+\VertexM[xa=-3,ya=3,xb=3,yb=2,shows=2,starts=3,stops=10]{x}
+#+end_src
+
+indicates a vertex labeled ~x~ that goess from (-3,3) to (3,2), shows at
+the second stage, and moves from the third overlay to the tenth.
+
+* The macro for movable edges
+
+~\EdgeM~ accepts two mandatory arguments: the labels of the vertices it
+joins, and some optional keys, described below. It is used to draw
+edges that go from being curved, and gradually becoming rectilinear.
+
+| key       | default value | meaning                              |
+|-----------+---------------+--------------------------------------|
+| ~bends~     |          ~left~ | direction of the bending             |
+| ~bendsfrom~ |            60 | measure of the bending               |
+| ~shows~     |             1 | overlay where the edge appears       |
+| ~starts~    |             1 | overlay where the edge starts moving |
+| ~stops~     |            10 | overlay where the edge stops moving  |
+
+An example of the usage of this macro:
+~\EdgeM[shows=6,starts=10,stops=20]{b0}{c0}~.
+
+* Examples
+
+There are two examples included of the usage of this package: one very
+simple, and a "real life" example.
