@@ -76,7 +76,7 @@
   \begingroup
   \setkeys[GR]{MEe}{#1}%
   \pgfmathsetmacro{\last@still}{\cmdGR@MEe@starts-1}
-  \foreach\x in {\cmdGR@MEe@Appears,...,\last@still}{%
+  \foreach\x in {\cmdGR@MEe@shows,...,\last@still}{%
     \only<\x>{\Edge[style={bend \cmdGR@MEe@bends=\cmdGR@MEe@bendsfrom}](#2)(#3)}
   }
   \foreach\x in {\cmdGR@MEe@starts,...,\cmdGR@MEe@stops}{%
