@@ -3,7 +3,7 @@
 * Introduction
 
 This is the documentation of the LaTeX package ~graphiso.sty~. This
-package is built on top of the [[http://www.ctan.org/pkg/tkz-graph][tkz-graph]] package, to show an an
+package is built on top of the [[http://www.ctan.org/pkg/tkz-graph][tkz-graph]] package, to show an
 animation of a graph isomorphisms in a beamer presentation.
 
 The idea is simple: a graph isomorphism is shown in a beamer frame by
@@ -58,8 +58,8 @@ An example of the usage of this macro:
 
 * Examples
 
-There are two examples included of the usage of this package: one very
-simple, and a "real life" example.
+There are two examples included of the usage of this package: a simple
+one, and also a "real life" example.
 
 * Notes
 
