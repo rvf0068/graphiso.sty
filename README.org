@@ -8,9 +8,9 @@ of a graph isomorphism in a beamer presentation.
 
 The idea is simple: a graph isomorphism is shown in a beamer frame by
 moving step by step all vertices in a graph from an initial position
-to a final position, using beamer overlays. At present, any given
-vertex moves in a linear path. Since the edges always join the same
-vertices, at each stage we have a graph isomorphic to the first.
+to a final position, using beamer overlays. Any given vertex moves in
+a linear path. Since the edges always join the same vertices, at each
+stage we have a graph isomorphic to the first.
 
 The package provides only two new macros: ~\VertexM~ and ~\EdgeM~ (here ~M~
 stands for "movable"). 
@@ -20,7 +20,9 @@ stands for "movable").
 ~\VertexM~ accepts one mandatory argument: the label of the movable
 vertex, and some optional keys:
 
+#+attr_html: class="center"
 | key    | default value | meaning                                |
+|        |           <c> |                                        |
 |--------+---------------+----------------------------------------|
 | ~xa~     |             0 | initial ~x~ coordinate of the vertex     |
 | ~ya~     |             0 | initial ~y~ coordinate of the vertex     |
@@ -30,15 +32,10 @@ vertex, and some optional keys:
 | ~starts~ |             1 | overlay where the vertex starts moving |
 | ~stops~  |            10 | overlay where the vertex stops moving  |
 
-So, for example, 
-
-#+begin_src latex :exports code
-\VertexM[xa=-3,ya=3,xb=3,yb=2,shows=2,starts=3,stops=10]{x}
-#+end_src
-
-indicates a vertex labeled ~x~ that goess from (-3,3) to (3,2), shows up
-at the second overlay, and movement from the third overlay to the
-tenth.
+So, for example,
+~\VertexM[xa=-3,ya=3,xb=3,yb=2,shows=2,starts=3,stops=10]{x}~ indicates
+a vertex labeled ~x~ that goess from (-3,3) to (3,2), shows up at the
+second overlay, and movement from the third overlay to the tenth.
 
 * The macro for movable edges
 
@@ -46,7 +43,9 @@ tenth.
 joins, and some optional keys, described below. It is used to draw
 edges that start being curved, gradually becoming rectilinear.
 
+#+attr_html: class="center"
 | key       | default value | meaning                              |
+|           |           <c> |                                      |
 |-----------+---------------+--------------------------------------|
 | ~bends~     |          ~left~ | direction of the bending             |
 | ~bendsfrom~ |            60 | measure of the bending               |
