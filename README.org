@@ -60,3 +60,8 @@ An example of the usage of this macro:
 
 There are two examples included of the usage of this package: one very
 simple, and a "real life" example.
+
+* Notes
+
+- Note that the Beamer macro ~\transduration~ can be used to run the
+  overlays automatically.
