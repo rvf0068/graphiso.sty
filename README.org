@@ -68,9 +68,9 @@ and one complicated, closer to a "real life" example.
   sure the animation does not "jump" when going from slide to
   slide. One has to include the style ~stop jumping~ in a tikzpicture
   like so:
-#+begin_example
+
   \begin{tikzpicture}[stop jumping]
     .....
   \end{tikzpicture}
-#+end_example
+
   and compile twice. See the code of the examples. 
