@@ -22,7 +22,6 @@ vertex, and some optional keys:
 
 #+attr_html: class="center"
 | key    | default value | meaning                                |
-|        |           <c> |                                        |
 |--------+---------------+----------------------------------------|
 | ~xa~     |             0 | initial ~x~ coordinate of the vertex     |
 | ~ya~     |             0 | initial ~y~ coordinate of the vertex     |
@@ -45,7 +44,6 @@ edges that start being curved, gradually becoming rectilinear.
 
 #+attr_html: class="center"
 | key       | default value | meaning                              |
-|           |           <c> |                                      |
 |-----------+---------------+--------------------------------------|
 | ~bends~     |          ~left~ | direction of the bending             |
 | ~bendsfrom~ |            60 | measure of the bending               |
@@ -65,3 +63,14 @@ and one complicated, closer to a "real life" example.
 
 - Note that the Beamer macro ~\transduration~ can be used to run the
   overlays automatically.
+- This code includes code by Andrew Stacey posted at
+  http://tex.stackexchange.com/a/51638/250. Such code helps in making
+  sure the animation does not "jump" when going from slide to
+  slide. One has to include the style ~stop jumping~ in a tikzpicture
+  like so:
+#+begin_src latex :exports code
+  \begin{tikzpicture}[stop jumping]
+    .....
+  \end{tikzpicture}
+#+end_src
+  and compile twice. See the code of the examples. 

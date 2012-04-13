@@ -7,8 +7,7 @@
 
 \begin{frame}
   \begin{center}
-    \begin{tikzpicture}
-      \useasboundingbox (-3,-3) rectangle (3,3);
+    \begin{tikzpicture}[stop jumping]
       \draw (-3,-3) grid (3,3);
       \draw[green] (0,0) -- (3,0);
       \draw[red] (0,0) -- (0,3);
@@ -22,8 +21,7 @@
 \begin{frame}
   \transduration{0}
   \begin{center}
-    \begin{tikzpicture}
-      \useasboundingbox (-3,-3) rectangle (3,3);
+    \begin{tikzpicture}[stop jumping]
       \draw (-3,-3) grid (3,3);
       \draw[green] (0,0) -- (3,0);
       \draw[red] (0,0) -- (0,3);
