@@ -69,8 +69,8 @@ and one complicated, closer to a "real life" example.
   slide. One has to include the style ~stop jumping~ in a tikzpicture
   like so:
 
-  \begin{tikzpicture}[stop jumping]
-    .....
-  \end{tikzpicture}
+: \begin{tikzpicture}[stop jumping]
+:   .....
+: \end{tikzpicture}
 
   and compile twice. See the code of the examples. 
