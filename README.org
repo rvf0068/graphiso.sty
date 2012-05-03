@@ -63,7 +63,7 @@ and one complicated, closer to a "real life" example.
 
 - Note that the Beamer macro ~\transduration~ can be used to run the
   overlays automatically.
-- This code includes code by Andrew Stacey posted at
+- This package includes code by Andrew Stacey posted at
   http://tex.stackexchange.com/a/51638/250. Such code helps in making
   sure the animation does not "jump" when going from slide to
   slide. One has to include the style ~stop jumping~ in a tikzpicture
